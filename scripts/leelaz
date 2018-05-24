@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#"Fake" leelaz executable that runs leelaz remotely.
+
 set -eu
 source ../config.sh
 gcloud compute ssh "$INSTANCE_NAME" --zone "$ZONE" --command "/leela/leelaz -g -t $CPU_COUNT -w /leela/$NETWORK-network.gz -b 0"
