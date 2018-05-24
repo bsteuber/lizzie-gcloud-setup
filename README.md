@@ -59,6 +59,8 @@ See https://cloud.google.com/sdk/docs/#install_the_latest_cloud_tools_version_cl
 
 You need to set the GPU and Zone you chose above. Also decide on a number of CPUs (not sure what is best, the cost very little compared to the GPU).
 
+You can also chose if you want to run the best leela-zero network or the converted Facebook ELF OpenGo one.
+
 ### Setup
 
 ```./scripts/full-install.sh```
