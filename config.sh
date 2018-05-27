@@ -18,14 +18,14 @@ GPU_TYPE=nvidia-tesla-p100
 # the number of gpus (one should usually be enough)
 GPU_COUNT=1
 
-# the number of cpus you seem fit for your gpu - try powers of 2 or consult https://cloud.google.com/compute/docs/machine-types
-CPU_COUNT=8
+# the number of cpus you seem fit for your gpu - should be an even number
+CPU_COUNT=6
 
 # 10GB should be plenty of space for just leela zero.. You might get away with less
 DISK_SIZE=10GB
 
-# You could configure a custom RAM amount here - see https://cloud.google.com/compute/docs/machine-types. But normally just leave it..
-MACHINE_TYPE="n1-standard-$CPU_COUNT"
+# Set the RAM here - not sure how much is needed for leela
+MEMORY=10GB
 
 # Only touch these if you know what you're doing. You will need to adapt the setup script for other Linux distributions.
 IMAGE_FAMILY=ubuntu-1604-lts
