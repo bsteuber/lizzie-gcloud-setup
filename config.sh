@@ -7,7 +7,7 @@
 INSTANCE_NAME=lizzie
 
 # can be either "best" or "elf" for the facebook opengo converted weights (currently stronger, slower)
-NETWORK=elf
+NETWORK=best
 
 # pick a nearby zone that has the gpu you want - see https://cloud.google.com/compute/docs/gpus/
 ZONE=europe-west4-a

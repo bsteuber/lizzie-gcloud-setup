@@ -34,7 +34,7 @@ Also, this guide assumes you have some experience with linux etc. - if you are p
 
 ### Choosing a GPU
 
-Currently, Google offers three different types of GPU, ordered by price: Tesla K80, P100, and V100. The V100 will have the best performance (for me currently 1.5k n/s using the best-network.gz) but be more expensive, so you can chose whatever you feel is best. See https://cloud.google.com/compute/pricing#gpus for prices, as well as https://browser.geekbench.com/cuda-benchmarks for a benchmark.
+Currently, Google offers three different types of GPU, ordered by price: Tesla K80, P100, and V100. For me the P100 seems to have the best performance/cost ratio (achieving 1.5k n/s using the best-network.gz), but you can chose whatever you feel is best. See https://cloud.google.com/compute/pricing#gpus for prices, as well as https://browser.geekbench.com/cuda-benchmarks for a benchmark. Weirdly though, the V100 doesn't perform better than the P100 at all for me, not sure why that happens.
 
 ### Chosing a Zone
 
@@ -68,6 +68,14 @@ You can also chose if you want to run the best leela-zero network or the convert
 ### Running
 
 ```./scripts/run-lizzie.sh```
+
+### Lizzie Configuration
+
+After installation, you can change the config.txt file in the lizzie folder however you like. There's a readme.txt file with details in that folder, too.
+
+### Upgrading from previous versions
+
+Since the leela-zero repo and branch as well as the lizzie-repo have changed, the easiest way is deleting your gcloud instance and lizzie folder, then pulling and doing a full install again. You could also manually delete the leela-zero folder on the machine and run the clone and build commands from the remote/setup script as well as the setup-lizzie.sh.
 
 ### Contributing
 

@@ -14,7 +14,7 @@ if ! -f /leela/leelaz; then
     echo "Installing Leela Zero"
     sudo apt-get update
     sudo apt-get install make git g++ libboost-dev libboost-program-options-dev libopenblas-dev opencl-headers ocl-icd-libopencl1 ocl-icd-opencl-dev zlib1g-dev -y
-    git clone https://github.com/bsteuber/leela-zero.git # this fork uses an up-to-date leela-zero master branch with the changes from https://github.com/featurecat/leela-zero
+    git clone -b next https://github.com/gcp/leela-zero.git
     cd leela-zero/src
     make
     cp leelaz /leela

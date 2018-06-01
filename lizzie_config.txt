@@ -1,0 +1,36 @@
+{
+  "leelaz": {
+    "automatically-download-latest-network": false,
+    "max-analyze-time-minutes": 1000,
+    "analyze-update-interval-centisec": 50,
+    "network-file": "network.gz",
+    "max-game-thinking-time-seconds": 5,
+    "engine-start-location": "..",
+    "engine-command": "./scripts/remote-leelaz",
+    "print-comms": false
+  },
+  "ui": {
+    "shadows-enabled": true,
+    "board-color": [
+      217,
+      152,
+      77
+    ],
+    "shadow-size": 100,
+    "show-winrate": true,
+    "fancy-board": true,
+    "show-variation-graph": true,
+    "win-rate-always-black": false,
+    "confirm-exit": false,
+    "handicap-instead-of-winrate": false,
+    "large-subboard": true,
+    "show-move-number": false,
+    "show-next-moves": true,
+    "show-leelaz-variation": true,
+    "show-subboard": true,
+    "theme": "DefaultTheme",
+    "fancy-stones": true,
+    "show-best-moves": true,
+    "board-size": 19
+  }
+}
