@@ -23,7 +23,7 @@
     "win-rate-always-black": false,
     "confirm-exit": false,
     "handicap-instead-of-winrate": false,
-    "large-subboard": true,
+    "large-subboard": false,
     "show-move-number": false,
     "show-next-moves": true,
     "show-leelaz-variation": true,
