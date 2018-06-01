@@ -75,7 +75,7 @@ After installation, you can change the config.txt file in the lizzie folder howe
 
 ### Upgrading from previous versions
 
-Since the leela-zero repo and branch as well as the lizzie-repo have changed, the easiest way is deleting your gcloud instance and lizzie folder, then pulling and doing a full install again. You could also manually delete the leela-zero folder on the machine and run the clone and build commands from the remote/setup script as well as the setup-lizzie.sh.
+Since the leela-zero repo and branch as well as the lizzie release have changed, the easiest way is deleting your gcloud instance and lizzie folder, then pulling and doing a full install again. You could also manually delete the leela-zero folder on the machine and run the git clone and build commands from the remote/setup script as well as the setup-lizzie.sh.
 
 ### Contributing
 
