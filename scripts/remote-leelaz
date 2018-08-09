@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Script for executing leelaz remotely.
+#Script for executing leelaz remotely.
 
 set -eu
 source ./config.sh
