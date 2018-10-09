@@ -4,4 +4,4 @@ set -eu
 cd lizzie
 java -jar Lizzie.jar
 cd ..
-./scripts/stop-instance.sh
+#./scripts/stop-instance.sh
