@@ -15,7 +15,9 @@ sudo apt-get update
 sudo apt-get install make git g++ libboost-dev libboost-program-options-dev libopenblas-dev opencl-headers ocl-icd-libopencl1 ocl-icd-opencl-dev zlib1g-dev -y
 rm -rf ./leela-zero
 git clone -b next https://github.com/gcp/leela-zero.git
-cd leela-zero/src
+cd leela-zero/
+git submodule update --init --recursive
+cd src/
 make
 cp leelaz /leela
 cd /leela
