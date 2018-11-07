@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eu
 ./scripts/start-instance.sh
 cd lizzie

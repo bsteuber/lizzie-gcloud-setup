@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Installs leela-zero for Lizzie on a gcloud compute instance
 set -eu
