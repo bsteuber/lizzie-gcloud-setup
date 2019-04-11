@@ -1,2 +1,3 @@
 #!/bin/bash
-curl -L http://zero.sjeng.org/networks/62b5417b64c46976795d10a6741801f15f857e5029681a42d02c9852097df4b9.gz -o elf-network.gz
+# Use ELFv2
+curl -L http://zero.sjeng.org/networks/05dbca157002b9fd618145d22803beae0f7e4015af48ac50f246b9316e315544.gz -o elf-network.gz

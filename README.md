@@ -2,31 +2,31 @@
 
 ## Introduction
 
-Since I don't own a high-end graphics card, I have found google compute to be a nice alternative for analyzing Go games with https://github.com/gcp/leela-zero/ and https://github.com/featurecat/lizzie
+Since I don't own a high-end graphics card, I have found Google Compute to be a nice alternative for analyzing Go games with https://github.com/gcp/leela-zero/ and https://github.com/featurecat/lizzie .
 
-This setup should work for Linux and OS X - sorry Windows-Users :(
+This setup should work for macOS.
 
 ## Costs
 
-On Google Compute, you pay precisely by the amount of seconds your instance is running. There is also some overhead for Disk storage, traffic etc, but I think that's almost neglectible compared to the GPU costs. See https://cloud.google.com/compute/pricing#gpus (the preemptible price) for a detailed listing. So for the default setup using a P100, in my region it currently would be 0.73USD/h
+On Google Compute, you pay precisely by the amount of seconds your instance is running. There is also some overhead for disk storage, traffic etc, but I think that's almost neglectible compared to the GPU costs. See https://cloud.google.com/compute/pricing#gpus (the preemptible price) for a detailed listing. So for the default setup using a V100, in my region it currently would be $0.74/h.
 
 Remember that the disk costs will continue even if you don't use Lizzie at all. So if you stop using it altogether, please remember deleting the instance and hard disk!
 
 ## Warning/Disclaimer
 
-If somehow the instance keeps running without your knowlwedge, it can get very expensive. So after installation and each time after using lizzie, please visit https://console.cloud.google.com/compute/instances and stop your instance if it isn't being stopped already (the stopping might take a few minutes, but if it prints "stopping" you should be fine).
+If somehow the instance keeps running without your knowledge it can get very expensive. So after installation and each time after using Lizzie, please visit https://console.cloud.google.com/compute/instances and stop your instance if it isn't being stopped already (the stopping might take a few minutes, but if it prints "stopping" you should be fine).
 
 The run-lizzie.sh script should automatically stop the instance after you close the Lizzie window (but check for yourself!), after the installation I don't stop it for you (because you likely wanna try it out anyways).
 
 Be careful, I will take no responsibility for any costs arising from using this setup. Nor can I guarantee that it really works for you, too.
 
-Also, this guide assumes you have some experience with linux etc. - if you are person without any IT knowledge, please ask someone else to do this for you :)
+Also, this guide assumes you have some experience with Unix - if you are person without any IT knowledge, please ask someone else to do this for you :)
 
 ## Installation Guide
 
 ### Requirements
 
-- OS X or Linux
+- macOS
 - A Google account
 - A credit card or other suitable Google payment method
 - Python 2 for gcloud command line tools
@@ -34,17 +34,18 @@ Also, this guide assumes you have some experience with linux etc. - if you are p
 
 ### Choosing a GPU
 
-Currently, Google offers three different types of GPU, ordered by price: Tesla K80, P100, and V100. For me the P100 seems to have the best performance/cost ratio (achieving 1.5k n/s using the best-network.gz), but you can chose whatever you feel is best. See https://cloud.google.com/compute/pricing#gpus for prices, as well as https://browser.geekbench.com/cuda-benchmarks for a benchmark. Weirdly though, the V100 doesn't perform better than the P100 at all for me, not sure why that happens.
+Currently, Google offers three different types of GPU, ordered by price: Tesla K80, P100, and V100. Leela Zero 0.17 supports tensor cores, so a V100 - which does have tensor cores - is the best GPU to use. This requires Ubuntu 18.04 and CUDA 10 and Nvidia drivers version 413 or better. See https://cloud.google.com/compute/pricing#gpus for prices.
 
 ### Chosing a Zone
 
-That part is easier, just visit https://cloud.google.com/compute/docs/gpus/#introduction and pick the closest zone which has the gpu you want to use.
+That part is easier, just visit https://cloud.google.com/compute/docs/gpus/#introduction and pick the closest zone which has the GPU you want to use.
 
 ### Set up a Google Compute project
 
-Visit https://cloud.google.com/, log in, create a project, register a payment method when you are asked.
+Visit https://cloud.google.com/, log in, create a project and register a payment method when you are asked.
 
 ### Enable GPU usage for you project
+
 - Visit https://console.cloud.google.com/iam-admin/quotas
 - Click on the selector under "metrics", click "none", enter "nvidia" in the search box, click on the one you decided on.
 - In the list, select the one from the region you decided on, then click "edit quotas".
@@ -59,11 +60,49 @@ See https://cloud.google.com/sdk/docs/#install_the_latest_cloud_tools_version_cl
 
 You need to set the GPU and Zone you chose above. Also decide on a number of CPUs (not sure what is best, the cost very little compared to the GPU).
 
-You can also chose if you want to run the best leela-zero network or the converted Facebook ELF OpenGo one.
+You can also choose if you want to run the best leela-zero network or the converted Facebook ELF v2 OpenGo one.
 
 ### Setup
 
 ```./scripts/full-install.sh```
+
+This will create the instance, set it up and then set up Lizzie.
+
+After creating the instance, the setup scripts need to ssh to your instance. But to do so you need to add your public SSH key to the instance, so the install script will pause and ask you to do so.
+
+Go to https://console.cloud.google.com
+
+On the Dashboard, there is a "Resources" box; inside that, click on "Compute engine". This takes you to the list of your instances.
+
+In the list, click the name of your instance, "leelazero-v100".
+
+On the "VM instance details" page, click "Edit" at the top. Scroll down to "SSH Keys". Click on "Show and edit". In the textarea, paste your id_rsa.pub and click "Add item". Then scroll to the bottom and click "Save".
+
+You should now be able to ssh to your instance with
+
+```gcloud compute ssh "leelazero-v100" --zone "europe-west4-a"```
+
+If this works, you can exit the remote shell and continue with the installation.
+
+These instructions do not support building autogtp because Qt is not installed.
+
+### Verify
+
+To make sure that Leela Zero uses the tensor cores, ssh to the instance and do
+
+```
+gcloud compute ssh "leelazero-v100" --zone "europe-west4-a"
+cd /leela
+./leelaz -w best-network.gz
+```
+
+Look for:
+
+    Selected platform: NVIDIA CUDA
+    Selected device: Tesla V100-SXM2-16GB
+    with OpenCL 1.2 capability.
+    Half precision compute support: No.
+    Tensor Core support: Yes.
 
 ### Running
 
@@ -71,7 +110,7 @@ You can also chose if you want to run the best leela-zero network or the convert
 
 ### Lizzie Configuration
 
-After installation, you can change the config.txt file in the lizzie folder however you like. There's a readme.txt file with details in that folder, too.
+After installation, you can change the config.txt file in the Lizzie folder however you like. There's a README.txt file with details in that folder, too.
 
 ### Upgrading from previous versions
 
@@ -79,14 +118,6 @@ After installation, you can change the config.txt file in the lizzie folder howe
 ./scripts/setup-instance.sh
 ./scripts/setup-lizzie.sh
 ```
-
-### Contributing
-
-I might need help with:
-- Windows support (or a manual for using Windows-Ubuntu maybe?)
-- Benchmarks for the different setups. I have no idea what number of CPUS and how much RAM (I currently just use the default for the CPU count) is best for each GPU type, of whether it's more efficent to use e.g. four K80 vs one V100.
-- Updates if new CUDA, leela-zero, lizzie versions come out.
-- Maybe support for Ubuntu 18 instead of 16?
 
 ### License
 
