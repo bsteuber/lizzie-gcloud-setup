@@ -18,7 +18,7 @@ URLS
 
 for i in "${MAPFILE[@]}"
 do
-    alias ${ALIAS_PREFIX}$i='cd $DIR; ./scripts/$i.sh'
+    alias ${ALIAS_PREFIX}$i="cd $DIR; ./scripts/$i.sh"
 done
 
 cd "$OLDDIR"
