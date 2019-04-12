@@ -31,3 +31,6 @@ MEMORY=10GB
 # Only touch these if you know what you're doing. You will need to adapt the setup script for other Linux distributions.
 IMAGE_FAMILY=ubuntu-1804-lts
 IMAGE_PROJECT=ubuntu-os-cloud
+
+# Prefix for shell aliases
+ALIAS_PREFIX=v100-

@@ -4,7 +4,7 @@
 
 Since I don't own a high-end graphics card, I have found Google Compute to be a nice alternative for analyzing Go games with https://github.com/gcp/leela-zero/ and https://github.com/featurecat/lizzie .
 
-This setup should work for macOS.
+This setup should work for macOS and Linux.
 
 ## Costs
 
@@ -16,7 +16,7 @@ Remember that the disk costs will continue even if you don't use Lizzie at all. 
 
 If somehow the instance keeps running without your knowledge it can get very expensive. So after installation and each time after using Lizzie, please visit https://console.cloud.google.com/compute/instances and stop your instance if it isn't being stopped already (the stopping might take a few minutes, but if it prints "stopping" you should be fine).
 
-The run-lizzie.sh script should automatically stop the instance after you close the Lizzie window (but check for yourself!), after the installation I don't stop it for you (because you likely wanna try it out anyways).
+The `run-lizzie.sh` script should automatically stop the instance after you close the Lizzie window (but check for yourself!), after the installation I don't stop it for you (because you likely wanna try it out anyways).
 
 Be careful, I will take no responsibility for any costs arising from using this setup. Nor can I guarantee that it really works for you, too.
 
@@ -26,7 +26,7 @@ Also, this guide assumes you have some experience with Unix - if you are person 
 
 ### Requirements
 
-- macOS
+- macOS or Linux
 - A Google account
 - A credit card or other suitable Google payment method
 - Python 2 for gcloud command line tools
@@ -38,7 +38,7 @@ Currently, Google offers three different types of GPU, ordered by price: Tesla K
 
 ### Chosing a Zone
 
-That part is easier, just visit https://cloud.google.com/compute/docs/gpus/#introduction and pick the closest zone which has the GPU you want to use.
+That part is easier; just visit https://cloud.google.com/compute/docs/gpus/#introduction and pick the closest zone which has the GPU you want to use.
 
 ### Set up a Google Compute project
 
@@ -80,7 +80,7 @@ On the "VM instance details" page, click "Edit" at the top. Scroll down to "SSH 
 
 You should now be able to ssh to your instance with
 
-```gcloud compute ssh "leelazero-v100" --zone "europe-west4-a"```
+```./scripts/ssh-to-instance.sh```
 
 If this works, you can exit the remote shell and continue with the installation.
 
@@ -118,6 +118,18 @@ After installation, you can change the config.txt file in the Lizzie folder howe
 ./scripts/setup-instance.sh
 ./scripts/setup-lizzie.sh
 ```
+
+### Shell Aliases
+
+Normally, to run the scripts, you have to `cd` to the directory above `scripts` because the scripts read the config.sh that is also in this directory. As a convenience, there is a script that defines aliases for common scripts will do this for you. You have to defined an `ALIAS_PREFIX` in the `config.sh` file.
+
+Then, in your `.bashrc`, you can do
+
+```source /path/to/scripts/print-aliases.sh```
+
+Then, assuming your prefix was `v100-`, you can just use the following command from any directory to run Lizzie remotely:
+
+```v100-run-lizzie```
 
 ### License
 
