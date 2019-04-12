@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+OLDDIR=$(pwd)
+
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$SCRIPTDIR/.."
 DIR="$(pwd)"
@@ -18,3 +21,4 @@ do
     alias ${ALIAS_PREFIX}$i='cd $DIR; ./scripts/$i.sh'
 done
 
+cd "$OLDDIR"
