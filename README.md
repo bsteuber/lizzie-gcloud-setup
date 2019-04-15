@@ -64,27 +64,19 @@ You can also choose if you want to run the best leela-zero network or the conver
 
 ### Setup
 
-```./scripts/full-install.sh```
+#### Create an instance
 
-This will create the instance, set it up and then set up Lizzie.
+```./scripts/create-instance.sh```
 
-After creating the instance, the setup scripts need to ssh to your instance. But to do so you need to add your public SSH key to the instance, so the install script will pause and ask you to do so.
+After, it might take a few seconds before the instance is running and can be setup.
 
-Go to https://console.cloud.google.com
+#### Set up an existing instance
 
-On the Dashboard, there is a "Resources" box; inside that, click on "Compute engine". This takes you to the list of your instances.
+```./scripts/setup-instance.sh```
 
-In the list, click the name of your instance, "leelazero-v100".
+#### Install Lizzie
 
-On the "VM instance details" page, click "Edit" at the top. Scroll down to "SSH Keys". Click on "Show and edit". In the textarea, paste your id_rsa.pub and click "Add item". Then scroll to the bottom and click "Save".
-
-You should now be able to ssh to your instance with
-
-```./scripts/ssh-to-instance.sh```
-
-If this works, you can exit the remote shell and continue with the installation.
-
-These instructions do not support building autogtp because Qt is not installed.
+```./scripts/setup-lizzie.sh```
 
 ### Verify
 
@@ -111,13 +103,6 @@ Look for:
 ### Lizzie Configuration
 
 After installation, you can change the config.txt file in the Lizzie folder however you like. There's a README.txt file with details in that folder, too.
-
-### Upgrading from previous versions
-
-```
-./scripts/setup-instance.sh
-./scripts/setup-lizzie.sh
-```
 
 ### Shell Aliases
 
