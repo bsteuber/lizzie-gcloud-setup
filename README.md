@@ -68,7 +68,7 @@ You can also choose if you want to run the best leela-zero network or the conver
 
 ```./scripts/create-instance.sh```
 
-After, it might take a few seconds before the instance is running and can be setup.
+After, it might take a few seconds before the instance is running and can be set up.
 
 #### Set up an existing instance
 
