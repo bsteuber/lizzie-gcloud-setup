@@ -3,7 +3,7 @@ set -eu
 ./scripts/start-instance.sh
 
 cd Lizzie
-java -jar Lizzie.jar
+java -jar lizzie.jar
 
 cd ..
 echo "Stopping instance in a few seconds; hit Ctrl-C to keep it running"
