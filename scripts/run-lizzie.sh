@@ -2,6 +2,9 @@
 set -eu
 ./scripts/start-instance.sh
 
+echo "Waiting a few seconds for the instance to be ready..."
+sleep 25
+
 cd Lizzie
 java -jar lizzie.jar
 
