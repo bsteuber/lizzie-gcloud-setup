@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Installs leela-zero for Lizzie on a gcloud compute instance
+# Installs leela-zero and KataGo for Lizzie on a gcloud compute instance
 set -eu
 
 source ./config.sh

@@ -1,6 +1,5 @@
 {
   "leelaz": {
-    "automatically-download-latest-network": false,
     "engine-preload-list": [
       false,
       false,
@@ -13,8 +12,8 @@
       false
     ],
     "engine-command-list": [
+      "../scripts/remote-leelaz-elfv2",
       "../scripts/remote-katago",
-      "",
       "",
       "",
       "",
@@ -25,44 +24,47 @@
     ],
     "max-analyze-time-minutes": 99999,
     "analyze-update-interval-centisec": 10,
+    "network-file": "network.gz",
+    "_comment": "note, network-file is obselete in Lizzie 0.7+, ignore network-file, kept for compatibility",
     "max-game-thinking-time-seconds": 2,
     "engine-start-location": ".",
     "avoid-keep-variations": 30,
-    "engine-command": "../scripts/remote-leelaz",
+    "engine-command": "../scripts/remote-leelaz-best",
     "print-comms": false,
     "show-lcb-winrate": false
   },
   "ui": {
     "comment-font-size": 0,
-    "board-color": [
-      217,
-      152,
-      77
-    ],
+    "hold-bestmoves-to-sgf": true,
     "shadow-size": 100,
     "show-winrate": true,
-    "autosave-interval-seconds": -1,
-    "append-winrate-to-comment": false,
-    "fancy-board": true,
-    "show-captured": true,
-    "replay-branch-interval-seconds": 1,
-    "panel-ui": false,
-    "weighted-blunder-bar-height": false,
-    "katago-estimate-mode": "small",
+    "autosave-interval-seconds": 10,
+    "limit-best-move-num": 0,
+    "stone-indicator-type": 1,
     "win-rate-always-black": false,
+    "board-width": 19,
     "show-border": false,
     "show-move-number": false,
     "winrate-stroke-width": 3,
     "show-next-moves": true,
+    "comment-node-color": [
+      0,
+      0,
+      255
+    ],
     "show-comment": true,
     "show-leelaz-variation": true,
-    "theme": "default",
-    "min-playout-ratio-for-stats": 0.1,
+    "show-bestmoves-by-hold": true,
+    "min-playout-ratio-for-stats": 0,
     "fancy-stones": true,
     "resume-previous-game": false,
-    "new-move-number-in-branch": true,
+    "comment-font-color": [
+      255,
+      255,
+      255
+    ],
+    "show-coordinates": false,
     "shadows-enabled": true,
-    "show-katago-boardscoremean": false,
     "show-katago-estimate-onsubboard": true,
     "show-variation-graph": true,
     "show-dynamic-komi": true,
@@ -71,18 +73,70 @@
     "katago-notshow-winrate": false,
     "minimum-blunder-bar-width": 3,
     "large-winrate": false,
-    "show-blunder-bar": false,
-    "only-last-move-number": 0,
     "confirm-exit": false,
+    "show-katago-estimate-onmainboard": false,
+    "scoremean-line-color": [
+      255,
+      0,
+      255
+    ],
+    "show-katago-estimate": true,
+    "show-best-moves": true,
+    "board-color": [
+      217,
+      152,
+      77
+    ],
+    "append-winrate-to-comment": true,
+    "fancy-board": true,
+    "color-by-winrate-instead-of-visits": false,
+    "show-captured": true,
+    "replay-branch-interval-seconds": 1,
+    "panel-ui": false,
+    "blunder-bar-color": [
+      255,
+      0,
+      0,
+      150
+    ],
+    "weighted-blunder-bar-height": false,
+    "katago-estimate-mode": "small",
+    "theme": "Default",
+    "show-winrate-in-suggestion": true,
+    "show-scoremean-in-suggestion": true,
+    "new-move-number-in-branch": true,
+    "winrate-line-color": [
+      0,
+      255,
+      0
+    ],
+    "blunder-node-colors": [],
+    "show-katago-boardscoremean": false,
+    "show-playouts-in-suggestion": true,
+    "limit-branch-length": 0,
+    "blunder-winrate-thresholds": [],
+    "board-position-proportion": 4,
+    "show-blunder-bar": true,
+    "only-last-move-number": 0,
+    "board-height": 19,
+    "winrate-miss-line-color": [
+      0,
+      0,
+      178
+    ],
     "show-status": true,
     "handicap-instead-of-winrate": false,
     "large-subboard": false,
+    "comment-background-color": [
+      0,
+      0,
+      0,
+      200
+    ],
     "dynamic-winrate-graph-width": false,
-    "show-katago-estimate-onmainboard": true,
     "show-subboard": true,
     "show-katago-scoremean": true,
-    "show-katago-estimate": true,
-    "show-best-moves": true,
+    "show-comment-node-color": false,
     "board-size": 19
   }
 }
