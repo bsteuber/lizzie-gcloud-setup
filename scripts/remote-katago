@@ -5,4 +5,4 @@
 set -eu
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source "${DIR}/../config.sh"
-gcloud compute ssh "$INSTANCE_NAME" --zone "$ZONE" --command "cd /leela && ./katago gtp -model model.txt -config gtp_remote.cfg"
+gcloud compute ssh "$INSTANCE_NAME" --zone "$ZONE" --command "cd /leela && ./katago gtp -model g170b20.txt.gz -config gtp_remote.cfg"
