@@ -1,9 +1,5 @@
 #!/bin/bash
-#curl -L https://github.com/lightvector/KataGo/releases/download/v1.1/g104-b20c256-s447913472-d241840887.zip -o katago-network.zip
-#unzip katago-network.zip
-#gunzip g104-b20c256-s447913472-d241840887/model.txt.gz
-#cp g104-b20c256-s447913472-d241840887/model.txt .
 
-curl -L https://github.com/lightvector/KataGo/releases/download/v1.3.2/g170-b20c256x2-s1913382912-d435450331.txt.gz -o g170b20.txt.gz
-
-curl -L https://github.com/lightvector/KataGo/releases/download/v1.3.2/g170e-b15c192-s1672170752-d466197061.txt.gz -o g170b15.txt.gz
+wget https://github.com/lightvector/KataGo/releases/download/v1.3.5-nets/g170-b30c320x2-s2846858752-d829865719.bin.gz
+wget https://github.com/lightvector/KataGo/releases/download/v1.3.5-nets/g170-b40c256x2-s2990766336-d830712531.bin.gz
+wget https://github.com/lightvector/KataGo/releases/download/v1.3.5-nets/g170e-b20c256x2-s3761649408-d809581368.bin.gz
