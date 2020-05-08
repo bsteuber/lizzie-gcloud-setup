@@ -6,9 +6,9 @@
 # the name of the created instance
 INSTANCE_NAME=leelazero-v100
 
-# can be either "best" or "elf" for the facebook opengo converted weights (currently stronger, slower)
-NETWORK=best
-# NETWORK=elf
+# whether to create a preemptible instance or not
+#PREEMPTIBLE=
+PREEMPTIBLE="--preemptible"
 
 # pick a nearby zone that has the gpu you want - see https://cloud.google.com/compute/docs/gpus/
 ZONE=europe-west4-a

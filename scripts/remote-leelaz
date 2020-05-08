@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-#Script for executing leelaz remotely.
-
-set -eu
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-source "${DIR}/../config.sh"
-gcloud compute ssh "$INSTANCE_NAME" --zone "$ZONE" --command "/leela/leelaz -g -w /leela/$NETWORK-network.gz -b 0 -t 16"
