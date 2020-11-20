@@ -104,6 +104,21 @@ Look for:
 
 After installation, you can change the config.txt file in the Lizzie folder however you like. There's a README.txt file with details in that folder, too.
 
+### FAQ
+Remember your SSH passphrase!
+
+Q:
+Upon Lizzie startup the engines take forever to load
+A:
+You need to enter your SSH password in the terminal each time you start or switch engine
+
+Q:
+The terminal says
+./config.sh: line xx: ~KEY: command not found
+
+A:
+`config.sh` requires no space in each line, of the form KEY=VALUE
+
 ### Shell Aliases
 
 Normally, to run the scripts, you have to `cd` to the directory above `scripts` because the scripts read the config.sh that is also in this directory. As a convenience, there is a script that defines aliases for common scripts will do this for you. You have to defined an `ALIAS_PREFIX` in the `config.sh` file.

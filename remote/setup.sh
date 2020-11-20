@@ -41,12 +41,15 @@ cp leelaz /leela
 
 echo "Installing Katago"
 sudo apt-get install libcudnn7 libcudnn7-dev unzip -y
+
+sudo apt install nvidia-cuda-toolkit
+
 cd
 rm -rf ./KataGo
 git clone https://github.com/lightvector/KataGo.git
 cd KataGo/cpp
-cmake . -DBUILD_MCTS=1 -DUSE_BACKEND=CUDA
-make
+sudo cmake . -DBUILD_MCTS=1 -DUSE_BACKEND=CUDA
+sudo make
 cp katago /leela
 
 cd /leela
