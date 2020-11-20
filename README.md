@@ -74,6 +74,20 @@ After, it might take a few seconds before the instance is running and can be set
 
 ```./scripts/setup-instance.sh```
 
+This can take around 30 minutes with several password prompts at the start. Unfortunately you need to stay close (~5 mins) until it reaches the main installation with another password prompt. Finally, if you miss the password point near the end, after katago has been installed, just call ```./scripts/tune-instance.sh``` afterwards to tune leelazero.
+
+This will fail if you already have attempted a cmake installation of katago as the files are write protected. You can edit the script to add more sudos in this case.
+
+#### Tune katago
+```./scripts/tune-kg.sh```
+This tries to find the number of search threads for the expected time spent per move $KGTIME. The time spent on this tuning step (and hence accuracy) is governed by $KGVISITS. These can be set in `config.sh`. At current settings, this step takes around 10 mins. If you don't run this now, katago will hang for this time when you first run it.
+
+Follow the advice given in the output to optimise the engine by changing numSearchThreads in ```./remote/gtp_example.cfg```.
+
+Finally run ```./scripts/update-instance.sh``` to copy the file to the Google Cloud.
+
+In general, you can add more cfg files for katago in the remote folder, copy them with this command, and change the config file by changing the key $KGCONFIG.cfg to equal the name of the file, in config.sh.
+
 #### Install Lizzie
 
 ```./scripts/setup-lizzie.sh```
@@ -100,6 +114,8 @@ Look for:
 
 ```./scripts/run-lizzie.sh```
 
+There is a terminal password prompt every time you start or switch an engine.
+
 ### Lizzie Configuration
 
 After installation, you can change the config.txt file in the Lizzie folder however you like. There's a README.txt file with details in that folder, too.
@@ -118,6 +134,11 @@ The terminal says
 
 A:
 `config.sh` requires no space in each line, of the form KEY=VALUE
+
+Q:
+Why is my instance still running?
+A:
+Only run-lizzie.sh will stop the instance. If you only tune or update, remember to stop the instance either by stop-instance.sh or by the Google Cloud console - VM instances - stop button
 
 ### Shell Aliases
 

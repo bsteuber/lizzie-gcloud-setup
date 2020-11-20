@@ -17,7 +17,7 @@ KGNET=b40s509
 
 # amount of time katago is expected to analyse each position for in seconds,for tuning purposes
 # on my instance when this is 5, then 16 threads are recommended, and when 60, then 160 threads
-KGTIME=20
+KGTIME=60
 
 # larger for more accuratate tuning but takes longer to tune
 KGVISITS=2000
