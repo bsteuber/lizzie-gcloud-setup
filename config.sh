@@ -23,7 +23,7 @@ KGTIME=60
 KGVISITS=2000
 
 # the config file as katago has lots of parameters
-KGCONFIG=gtp_example
+KGCONFIG=default_gtp
 
 # pick a nearby zone that has the gpu you want - see https://cloud.google.com/compute/docs/gpus/
 ZONE=europe-west4-a

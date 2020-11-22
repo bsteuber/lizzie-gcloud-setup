@@ -12,11 +12,13 @@ Download this repository and run the scripts from a terminal. Choose the katago 
 
 On Google Compute, you pay precisely by the amount of seconds your instance is running. There is also some overhead for disk storage, traffic etc, but I think that's almost neglectible compared to the GPU costs. See https://cloud.google.com/compute/pricing#gpus (the preemptible price) for a detailed listing. So for the default setup using a V100, in my region it currently would be $0.74/h.
 
-Remember that the disk costs will continue even if you don't use Lizzie at all. So if you stop using it altogether, please remember deleting the instance and hard disk!
+Preemptible VMs cost much less, and are always stopped after 24 hours, but they might be stopped if Compute Engine needs them for other workloads.
+
+Remember that the disk costs will continue even if you don't use Lizzie at all, currently around $0.30/month. So if you stop using it altogether, please remember deleting the instance and hard disk!
 
 ## Warning/Disclaimer
 
-If somehow the instance keeps running without your knowledge it can get very expensive. So after installation and each time after using Lizzie, please visit https://console.cloud.google.com/compute/instances and stop your instance if it isn't being stopped already (the stopping might take a few minutes, but if it prints "stopping" you should be fine).
+If somehow the instance keeps running without your knowledge it can get very expensive. So after installation and each time after using Lizzie, please visit https://console.cloud.google.com/compute/instances and stop your instance if it isn't being stopped already (the stopping might take a few minutes, but if it prints "stopping" and then "Updated", you should be fine).
 
 The `run-lizzie.sh` script should automatically stop the instance after you close the Lizzie window (but check for yourself!), after the installation I don't stop it for you (because you likely wanna try it out anyways).
 
@@ -40,7 +42,7 @@ Currently, Google offers three different types of GPU, ordered by price: Tesla K
 
 ### Chosing a Zone
 
-That part is easier; just visit https://cloud.google.com/compute/docs/gpus/#introduction and pick the closest zone which has the GPU you want to use.
+That part is easier; just visit https://cloud.google.com/compute/docs/gpus/#introduction and pick the closest zone which has the GPU you want to use. This will affect the network part of the price.
 
 ### Set up a Google Compute project
 
@@ -123,7 +125,7 @@ Look for:
 
 ```./scripts/run-lizzie.sh```
 
-There is a terminal password prompt every time you start or switch an engine.
+There is a terminal password prompt every time you start an engine. Note that it can take several seconds to load an engine, and katago takes longer than leelazero.
 
 ### Lizzie Configuration
 
@@ -160,6 +162,11 @@ Q:
 Why is my instance still running?
 A:
 Only run-lizzie.sh will stop the instance. If you only tune or update, remember to stop the instance either by stop-instance.sh or by the Google Cloud console - VM instances - stop button
+
+Q:
+Why does the output not update for several seconds or longer at high playouts, or when I add another move?
+A:
+I don't know. It might be lizzie. You can reset the command by changing komi to something else and back.
 
 ### License
 
